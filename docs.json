@@ -1,15 +1,16 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "almond",
+  "name": "Leads AI",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#931dd3",
+    "light": "#931dd3",
+    "dark": "#931dd3"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "./favicon.ico",
   "navigation": {
     "tabs": [
+      
       {
         "tab": "Guides",
         "groups": [
@@ -17,8 +18,8 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "connection/NewConnection"
+
             ]
           },
           {
@@ -43,6 +44,12 @@
               "ai-tools/cursor",
               "ai-tools/claude-code",
               "ai-tools/windsurf"
+            ]
+          },
+          {
+            "group": "Connection",
+            "pages": [
+              "connection/NewConnection"
             ]
           }
         ]
@@ -89,32 +96,26 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/logo-cropped.png",
+    "dark": "/logo/logo-cropped.png"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@leeadsai.in"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://app.leadsai.in"
     }
   },
   "contextual": {
     "options": [
      "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
+     "view"
    ]
   },
   "footer": {
@@ -123,5 +124,16 @@
       "github": "https://github.com/mintlify",
       "linkedin": "https://linkedin.com/company/mintlify"
     }
+  },
+  "background": {
+    "color": {
+      "light": "#09090b",
+      "dark": "#09090b"
+    },
+    "decoration": "windows"
+  },
+  "appearance": {
+    "default": "dark",
+    "strict": true
   }
 }
