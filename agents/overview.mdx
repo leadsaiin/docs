@@ -1,0 +1,86 @@
+---
+title: "AI Agents"
+description: "Learn how to create, train, and manage AI Agents in Leads AI. This guide covers agent fundamentals, supported training data types, Retrieval-Augmented Generation (RAG), step-by-step creation, common errors, and best practices for updating agents."
+---
+
+
+## Overview of AI Agents
+
+An AI agent is an autonomous software program designed to interact with its environment, collect data, and perform self-directed tasks to achieve predefined goals. Unlike traditional software, AI agents operate independently by making decisions, planning actions, and adapting based on new information without constant human intervention. 
+
+Key characteristics include autonomy, goal-oriented behavior, perception through data collection, rational decision-making, proactivity, continuous learning, adaptability, and collaboration with other agents or humans. At their core, AI agents often rely on large language models (LLMs) such as **GPT** or **Claude**, which enable them to interpret natural language, reason over complex instructions, and interact with external tools and APIs.
+
+AI agents are widely used to automate complex workflows, enhance productivity by handling repetitive tasks, reduce operational costs, improve decision-making through real-time data analysis, and elevate customer experiences with personalized, efficient service.
+
+## Training Data
+
+There are two primary types of training data used to build AI agents:
+
+- **Websites**  
+  Training data can be sourced by providing URLs of websites. The system crawls these URLs to extract relevant text content for training. This method leverages publicly available web content and requires only the input of URLs by the user.
+
+- **PDFs**  
+  Users upload text-based PDFs to contribute training data. It is important to upload only searchable, text PDFs (not image-based PDFs) to ensure reliable data extraction. Uploading unsupported PDF formats will cause training failures.
+
+<Note>Proper data preparation is crucial to ensure the AI agent is trained effectively and accurately.</Note>
+
+## What is Retrieval-Augmented Generation (RAG)?
+
+**Retrieval-Augmented Generation (RAG)** is a method that enhances **Large Language Models (LLMs)** by augmenting their output with relevant information retrieved from an external knowledge base at query time. This approach compensates for the static knowledge limitation of LLMs, which are infrequently retrained and may have outdated information.
+
+### How RAG Works:
+1. A user poses a query.
+2. The system searches a knowledge base — often a vector database containing text their numerical embeddings — to find context relevant to the query.
+3. The retrieved context is added to the query prompt sent to the LLM.
+4. The LLM generates a response informed by both its training and the retrieved context.
+
+This process allows the AI to provide more accurate, up-to-date, and domain-specific answers by integrating external, authoritative data sources without retraining the base model.
+
+
+<Warning>
+Please ensure that the data provided in the website URLs and uploaded PDFs are consistent and do not contain conflicting information. Conflicting data sources can compromise the accuracy and reliability of the agent’s knowledge base. Review all inputs carefully before proceeding.
+</Warning>
+
+
+### Use Cases:
+- Answering questions using up-to-date documents or company-specific data.
+- Improving natural language processing tasks with fresh contextual information.
+- Incorporating relevant images or visual data in multimodal applications.
+
+![Rag Image](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt1496b19e4c6f9e66/66ba412a46b3f4241b969f48/rag-in-action.jpeg)
+
+
+## Steps to Create an Agent
+
+1. Navigate to [https://app.leadsai.in/agents](https://app.leadsai.in/agents).
+2. Click "**Create Agent**"
+3. Provide the agent's name, description, and system prompt.
+4. Upload PDFs (text-based only) and enter website URLs.
+5. Click "**Create Agent**" to start training.
+
+The training process runs in the background and typically takes **15-20** minutes, depending on the combined size of data sources. Note that the total data size must not exceed **15MB**; exceeding this will cause errors and training failures.
+
+Users will receive email notifications upon training completion or failure. In the event of failure, check for errors like unreachable websites or invalid PDFs, or contact support@leadsai.in for assistance.
+
+## Common Errors
+
+- **Website unreachable**: The provided URL cannot be accessed.
+- **PDF unreadable**: The uploaded PDF is corrupt or in an unsupported format.
+- **Invalid PDF format**: Only text-based PDFs are supported; image-only PDFs will cause failure.
+
+## Updating Agents
+
+Agents can be updated in two ways:
+
+1. **Basic Info Update**: Modify the agent's name, description, or system prompt by saving basic information without retraining.
+2. **Full Re-training (Save All Changes)**: Deletes the agent's existing data and retrains it from scratch using new data sources. Note: Only 3 full trainings are allowed per workspace per week.
+
+<Warning>Saving all changes will trigger a full re-training of the agent, which permanently deletes the existing knowledge base and replaces it with the new data provided. Please review and verify your data carefully before proceeding.</Warning>
+
+
+
+## Deleting Agents
+
+<Danger>
+Deleting agents is not allowed, as live users may be linked to these agents.
+</Danger>

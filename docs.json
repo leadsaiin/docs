@@ -18,8 +18,21 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "connection/NewConnection"
-
+              "connection/NewConnection",
+              "agents/prompt"
+            ]
+          },
+          {
+            "group": "Agents",
+            "pages": [
+              "agents/overview"
+            ]
+          },
+          {
+            "group": "Facebook",
+            "pages": [
+              "facebook/posts",
+              "facebook/lead-form"
             ]
           },
           {

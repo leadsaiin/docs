@@ -1,0 +1,86 @@
+---
+title: Posts
+description: Learn how to sync, configure, and automate Facebook posts within Leads AI for lead tracking, campaign management, and auto engagement.
+---
+
+
+## What is a Facebook Post
+
+A Facebook post is a piece of content shared by a person, page, or business on the Facebook platform. Posts can include text, images, videos, polls, links, or other media to build engagement, promote campaigns, share updates, or interact with the audience.  
+In the context of **Leads AI**, Facebook posts are a source of direct customer interaction — any engagement, such as likes, comments, or shares, can be tracked and converted into leads or campaign insights.
+
+## How to Sync Facebook Posts with Leads AI
+
+To sync your Facebook posts with Leads AI:
+
+1. Navigate to [https://app.leadsai.in/facebook/posts](https://app.leadsai.in/facebook/posts).
+2. Select the Facebook page you want to sync.
+3. Click **Sync** to pull the latest posts into Leads AI.
+
+Once synced, these posts can be configured for automated engagement and lead tracking.
+
+## Configure a Facebook Post
+
+You can configure a synced Facebook post to trigger specific actions based on user interactions.  
+
+- **Assign Campaigns** – Link the post to a specific campaign by editing the campaigns section.  
+- **Comments Configuration** – Decide what action to take when someone comments on your post.
+
+<Note>
+Always select **Static** as the Action Type for comment responses unless you specifically want to route comments to an agent. Using **Agent** will consume AI message quota according to your pricing plan, which may incur additional costs.
+</Note>
+
+### Comment Configuration Elements
+
+There are 6 key elements:
+
+- **Condition** – Select how the comment text is matched:  
+  - *Is Equals*: The comment must exactly match the given value.  
+  - *Contains*: The comment must include the keyword anywhere in the text.
+- **Value** – The specific word or phrase the comment should match against.
+- **Action Type** – Choose between:  
+  - *Static* – Sends a fixed, predefined reply **(highly recommended)**.  
+  - *Agent* – Routes the comment to a chatbot or live agent **(Very less recommended)**.
+- **Action Mode** *(Static only)* –  
+  - *Reply*: Posts a public comment reply.  
+  - *DM*: Sends a private message directly to the user.
+- **Select Agent** – If using Agent mode or DM, specify the agent that will respond to the user.
+- **Response Text** – The exact message or script sent in reply or DM.
+
+You can add multiple comment configurations to handle different types of comments.
+
+### Examples of Comments Configuration
+
+1. **Example 1: Automatic Thank You Reply for Exact Matches**
+
+- **Condition**: Is Equals  
+- **Value**: "Thank you"  
+- **Action Type**: Static  
+- **Action Mode**: Reply  
+- **Response Text**: "Thank you for your kind words! Let us know if you have any questions."
+
+2. **Example 2: Promotional DM for Comments Containing Keyword**
+
+- **Condition**: Contains  
+- **Value:** "discount"  
+- **Action Type**: Static  
+- **Action Mode**: DM  
+- **Response Text**: "Hi! Thanks for your interest. Use code SAVE20 at checkout for a 20% discount."
+
+3. **Example 3: Routing Complex Queries to Agent**
+
+- **Condition**: Contains  
+- **Value**: "help"  
+- **Action Type**: Agent  
+- **Select Agent**: SupportBot  
+- **Response Text**: (Not applicable for Agent type) 
+
+---
+
+## Why Configure Facebook Posts
+
+Configuring Facebook posts in Leads AI offers several benefits:
+
+- **Automated Engagement** – Instantly reply or DM interested users without manual effort.  
+- **Campaign Performance Tracking** – Capture comment engagement metrics linked to specific campaigns.  
+- **Lead Tracking** – Any user interacting with the post is recorded as a lead, allowing you to identify repeat interactions and track your audience over time.

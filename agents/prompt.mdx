@@ -1,0 +1,163 @@
+---
+title: "Prompting"
+description: "The ultimate guide to prompting"
+---
+
+# Using Lead Data in Prompting
+
+## Default Lead Fields
+
+Leads AI provides several **default lead fields** that you can directly use inside your AI agent’s prompts:
+
+- `first_name`
+- `last_name`
+- `dob`
+- `phone_number`
+- `email`
+- `street_address`
+- `state`
+- `country`
+- `zip_code`
+- `dnc` (Do Not Contact flag)
+- `tags`
+- `stage`
+
+---
+
+## Custom Fields
+
+You can also define **custom fields** based on your business needs.  
+For example, if you have added a new custom-field like `pay_by` in your leads data, it will be available as a custom variable.
+
+<Warning>
+    - Every custom field **must** be enclosed within double curly braces: `{{custom_field}}`  
+    - Custom fields **must not contain spaces** (this can break the bot)  
+    - Custom fields are **case-sensitive**
+</Warning>
+
+
+---
+
+## Utility Variables
+
+- `now` — The current date and time according to the timezone set in the account.
+
+**Example in Prompt:**
+
+The date and time now is: ```{{now}}```.
+The name of the lead according to their platform is: ```{{first_name}}```  ```{{last_name}}```.
+
+The prompt will be translated to
+
+```
+The date and time now is 2025-08-14 10:05:00 Asia/Kolkata Thursday
+The name of the lead according to their platform is Mounika Dora
+```
+
+---
+
+## Tools in Prompting
+
+Any tools that are custom-created, integrated, or activated will be **automatically added** to the end of the agent context in prompts.
+
+**The information is fed to the Agent like this**
+
+```text
+The registered or configured tools are:
+type: calendar, identifier: sales@leadsai.in, provider: google
+```
+
+<Info> The type, identifier, provider changes according to the tool </Info>
+
+---
+
+## Tools that are built-in to the bot
+
+| Tool Name | Description | Parameters |
+|-----------|-------------|------------|
+| `create_appointment_tool` | Creates an appointment | `platform` ('google', 'microsoft'), `appointment_description`, `date_time`, `from_email`, `customer_email`, `notes` |
+| `send_email_tool` | Sends an email | `platform`, `subject`, `body`, `from_email`, `customer_email` |
+| `create_call_alert_tool` | Creates a call alert | `call_alert_purpose`, `call_back_time` |
+| `update_lead_data_tool` | Updates lead data | `to_update` (dict of `str`, `int`, `float`, `list`, `dict`, `bool`) |
+| `update_lead_stage_tool` | Moves the lead to a different stage | `to_stage` (must exist in account settings) |
+| `get_categories_tool` | Retrieves product categories | — |
+| `get_item_by_instagram_url_tool` | Get item details from Instagram URL | `instagram_url` |
+| `get_item_full_details_tool` | Get full product details by item ID | `item_id` |
+| `get_items` | Retrieve items with pagination | `page`, `limit`, `category_id` |
+| `create_order_tool` | Creates an order | `item_id`, `address`, `paid_amount`, `payment_through`, `payment_proof`, `payment_details`, `comments`, `quantity` |
+
+
+
+<Note>
+    You can either prompt the agent to use specific tool or it chooses them automatically. But, we recommend you to prompt
+    
+</Note>
+---
+
+## Prompting Instruction Examples
+
+### 1. Booking Appointments
+If the user wants an appointment with the doctor, please book it using xyz@hospitals.com. Calendar platform is Google.
+
+<Warning>The calendar should be integrated with this email.</Warning>
+
+<Note>It is recommended to provide the platform also</Note>
+
+
+### 2. Sending Emails
+If the user needs the itinerary, please send from sales@travelagency.com cc-ing someone@travelagency.com. It is a Google Email
+
+<Warning>The mail should be integrated in the tools</Warning>
+
+<Note>It is recommended to provide the platform also</Note>
+
+### 3. Moving Lead Stage
+If the user is interested in booking a trip, please move the lead to "Interested" stage.
+
+<Warning>The stage must exists in the Account settings. Please check **General settings** under **Workspace Settings** </Warning>
+
+
+### 4. Creating Call Alerts
+
+If the user asks for a human agent or a callback,
+please create a call alert titled `NEED HUMAN ASSISTANCE: subject`
+for 30 minutes from now.
+
+
+<Note>
+    Mentioning time is important because the Leads AI dashboard highlights overdue call alerts.
+    
+</Note>
+
+### 5. E-commerce Bot Flow
+Greet the customer using their name. Your name is Mounika.
+Be friendly, keep messages short, share images as images (not links).
+
+If a user asks for product details, check the backend.
+If they want to buy, share the UPI handle + QR code (no payment link unless requested for security reasons).
+Collect: street, locality, city, state, 6-digit pincode.
+
+After receiving payment screenshot, address, and item details, create an order in the database.
+If unsure, create a call alert with prefix `NEW ORDER URGENT - item ID/name` to be addressed in 5 minutes.
+
+Payments accepted: UPI, Razorpay payment link. Verify screenshot details.
+DO NOT send order confirmation — just say the team will confirm within 1 business day.
+
+
+<Info>
+    The above prompt can be configured to your needs. 
+    
+</Info>
+
+### 6. Knowledge Base Queries
+
+For any information about Leads AI, check the training data with this tool `query_among_documents`.
+
+<Warning>Mentioning this tool in the prompt is mandatory to query from Knowledge base</Warning>
+
+---
+
+**Best Practices:**
+- Always wrap variables inside `{{ }}`  
+- Match exact case of variable names  
+- Keep instructions clear and structured
